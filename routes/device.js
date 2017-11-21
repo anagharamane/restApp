@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
                     console.error(err);
                     res.json({
                         success: false,
-                        msg: "Some Error"
+                        msg: "There is some error"
                     });
                 } else {
                     res.json({
@@ -56,7 +56,7 @@ router.post('/', (req, res, next) => {
 });
 
 
-router.post('/find',(req,res,next)=>{
+router.post('/find_by_type',(req,res,next)=>{
     type = req.body.type;
     Device.getDevicebyType(type,(err,device)=>{
         console.log(device);
@@ -67,14 +67,11 @@ router.post('/find',(req,res,next)=>{
             });
         }else{
             res.json({
-                status:false,
+                status:true,
                 msg:device
             }); 
         }
     });
 });
-
-
-
 
 module.exports = router;
